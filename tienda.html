@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda</title>
+</head>
+<body>
+    <h1>TIENDA EN LINEA</h1>
+    <h2>REGISTRO DE PRODUCTOS</h2>
+
+    <form>
+        <input size="50" type="text" id="nombre" placeholder="INGRESA EL NOMBRE DEL PRODUCTO">
+        <input size="50" type="number" id="precio" placeholder="INGRESA EL PRECIO DEL PRODUCTO">
+        <input type="number" id="numero" placeholder="INGRESA LA CANTIDAD"><br><br>
+        <input type="button" value="agregar" onclick="capturar();">
+    </form>
+<br>
+
+<h2>CATÁLOGO</h2>
+
+    <div id="tabla"> </div>
+       
+
+<h2>CARRITO</h2> 
+<div id="carrito"></div>
+
+    <script>
+
+        
+ function capturar(){
+         //  console.log('ok');
+
+         function Catalogo(nombre,precio,numero){
+                this.nombre = nombre;
+                this.precio = precio;
+                this.numero = numero;
+            }
+            var nombreCapturar =  document.getElementById('nombre').value.toUpperCase();
+           //console.log(nombreCapturar);
+           var precioCapturar = document.getElementById('precio').value;
+          // console.log(precioCapturar);
+           var numeroCapturar = document.getElementById('numero').value;
+        //  console.log(numeroCapturar);
+            //quitamos var por ser variable local
+            nuevoProducto = new Catalogo(nombreCapturar,precioCapturar,numeroCapturar);
+           // console.log(nuevoProducto);
+            agregar();
+        }   
+        var baseDatos = [];
+        function agregar(){
+            baseDatos.push(nuevoProducto);
+            //console.log(baseDatos);
+            document.getElementById('tabla').innerHTML += `<p> producto:  ${nuevoProducto.nombre} </p><p> precio:  ${nuevoProducto.precio} </p><p> cantidad disponible: ${nuevoProducto.numero} </p> <p> Cantidad a agregar: <select name="cantidad" id="cantidad">
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                    <option value="5">5</option>
+                                                    <option value="6">6</option>
+                                                    <option value="7">7</option>
+                                                    <option value="8">8</option>
+                                                    <option value="9">9</option>
+                                                    <option value="10">10</option>
+                                                     </p>
+                                                     <p><input type="button" value="agregar" onclick="sumar();"> </p>`;
+
+            
+           
+                        }                  
+      function sumar(){
+            //console.log('ok');
+
+ 
+        }
+    
+    </script>
+    
+</body>
+</html>
+
